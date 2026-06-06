@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 a 0 - Multijugador</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>7 a 0 ⚽ <span class="subtitle">Multijugador</span></h1>
+
+    <div id="pantalla-inicio" class="card">
+      <input type="text" id="input-nombre" placeholder="Tu Nombre">
+      <div class="acciones-sala">
+        <button id="btn-crear">Crear Nueva Sala</button>
+        <div class="separador">ó</div>
+        <input type="text" id="input-sala" placeholder="Código de la Sala">
+        <button id="btn-unirse">Unirse a Sala</button>
+      </div>
+    </div>
+
+    <div id="pantalla-juego" class="card oculto">
+      <div class="info-sala">Sala: <span id="id-sala-actual">---</span></div>
+      
+      <div class="marcador">
+        <div class="jugador-marcador">
+          <span id="nombre-j1">Jugador 1</span>
+          <div class="score" id="score-j1">0</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="jugador-marcador">
+          <span id="nombre-j2">Esperando rival...</span>
+          <div class="score" id="score-j2">0</div>
+        </div>
+      </div>
+
+      <div class="zona-draft">
+        <button id="btn-dado" disabled>🎲 Tirar Dado (Turno de: <span id="turno-actual">...</span>)</button>
+        <div id="opciones-container" class="opciones-grid"></div>
+      </div>
+
+      <div class="tableros">
+        <div class="tablero">
+          <h3>Tu Equipo</h3>
+          <div id="tu-alineacion" class="slots-grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

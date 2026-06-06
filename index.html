@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 a 0 - Multijugador Real</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>7 a 0 ⚽ <span class="subtitle">Draft Multijugador en Vivo</span></h1>
+
+    <div id="pantalla-inicio" class="card">
+      <input type="text" id="input-nombre" placeholder="Tu Nombre o Nickname">
+      <div class="acciones-sala">
+        <button id="btn-crear">Crear Nueva Sala</button>
+        <div class="separador">o introduce un código</div>
+        <input type="text" id="input-sala" placeholder="Código de la Sala">
+        <button id="btn-unirse">Unirse a la Partida</button>
+      </div>
+    </div>
+
+    <div id="pantalla-juego" class="card oculto">
+      <div class="info-header">
+        <span class="badge-sala">Sala: <span id="id-sala-actual">---</span></span>
+        <span class="badge-turno">Turno de: <span id="turno-actual">...</span></span>
+      </div>
+      
+      <div class="marcador-medias">
+        <div class="bloque-media">
+          <span id="nombre-j1" class="nombre-user">J1</span>
+          <div class="media-score" id="score-j1">0</div>
+        </div>
+        <div class="vs-text">VS</div>
+        <div class="bloque-media">
+          <span id="nombre-j2" class="nombre-user">Esperando...</span>
+          <div class="media-score" id="score-j2">0</div>
+        </div>
+      </div>
+
+      <!-- Zona de Dados y Cartas Elegibles (Draft) -->
+      <div class="zona-draft">
+        <button id="btn-dado" disabled>🎲 Lanzar Dado de Selecciones</button>
+        <!-- ESTA LÍNEA DE ABAJO ES LA NUEVA QUE MUESTRA LA SELECCIÓN Y EL AÑO -->
+        <div id="info-dado-seleccion" class="badge-sala" style="display:block; margin: 10px auto; max-width: max-content; background: #ecc94b; color: #744210;">Lanza el dado para descubrir la plantilla disponible.</div>
+        <div id="opciones-container" class="cartas-draft-grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px;"></div>
+      </div>
+
+      <div class="campo-futbol">
+        <div class="linea-campo delantera" id="linea-DEL"></div>
+        <div class="linea-campo mediocampo" id="linea-MED"></div>
+        <div class="linea-campo defensa" id="linea-DEF"></div>
+        <div class="linea-campo porteria" id="linea-POR"></div>
+      </div>
+    </div>
+
+    <div id="pantalla-partido" class="card oculto">
+      <h2 class="titulo-simulacion">🏆 Gran Final en Directo 🏆</h2>
+      <div class="marcador-goles">
+        <div class="team-final">
+          <span id="final-nombre-j1">J1</span>
+          <div id="goles-j1" class="goles-marcador">0</div>
+        </div>
+        <div class="separador-goles">-</div>
+        <div class="team-final">
+          <div id="goles-j2" class="goles-marcador">0</div>
+          <span id="final-nombre-j2">J2</span>
+        </div>
+      </div>
+      
+      <div class="pantalla-retransmision">
+        <div class="minuto-badge" id="minuto-partido">Minuto 0'</div>
+        <p id="texto-evento">¡Los jugadores saltan al terreno de juego!</p>
+      </div>
+      <div id="estado-final-juego" class="texto-resultado-final"></div>
+    </div>
+
+  </div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
